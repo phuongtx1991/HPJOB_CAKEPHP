@@ -43,14 +43,14 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::prefix('api', function ($routes) {
-    $routes->extensions(['json', 'xml']);
-    $routes->resources('Cocktails');
-    $routes->resources('Users');
-    $routes->resources('Recipes');
-    Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
-    $routes->fallbacks('InflectedRoute');
-});
+//Router::prefix('api', function ($routes) {
+//    $routes->extensions(['json', 'xml']);
+//    $routes->resources('Cocktails');
+//    $routes->resources('Users');
+//    $routes->resources('Recipes');
+//    Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
+//    $routes->fallbacks('InflectedRoute');
+//});
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
@@ -63,8 +63,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-    $routes->connect('/showMoreJob', ['controller' => 'SearchJob', 'action' => 'showMoreJob']);
+//    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+//    $routes->connect('/showMoreJob', ['controller' => 'SearchJob', 'action' => 'showMoreJob']);
 
     /**
      * Connect catchall routes for all controllers.
@@ -82,7 +82,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
-    $routes->fallbacks(DashedRoute::class);
+//    $routes->fallbacks(DashedRoute::class);
+    $routes->fallbacks('DashedRoute');
 });
 
 /**
