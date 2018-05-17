@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -367,6 +368,102 @@ class DtbProductsTable extends Table
             ->allowEmpty('concierge');
 
         return $validator;
+    }
+
+
+    /**
+     * get the list five first job
+     *
+     * @return array
+     */
+    public function getJobInfoById($id)
+    {
+        try {
+            $jobList = $this->find()
+                ->where(['product_id' => $id, 'del_flg' => 0])
+                ->hydrate(false)
+                ->first();
+            return $jobList;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * get the list five first job
+     *
+     * @return array
+     */
+    public function getFiveJobFollowStatus($listId)
+    {
+        try {
+            $jobList = $this->find()
+                ->select(['product_id', 'region', 'currency', 'name', 'name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
+                ->Where(['OR' => $listId])
+                ->andWhere(['del_flg' => 0])
+                ->hydrate(false)
+                ->toArray();
+            return $jobList;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * get the list five first job
+     *
+     * @return array
+     */
+    public function getSearchResult($dataSearch)
+    {
+        try {
+
+            $wheresArray = array();
+            $nameJP = array();
+            $nameVN = array();
+            $jobDetailVN = array();
+            $jobDetailJP = array();
+
+            if (!empty($dataSearch['searchKeyword'])) {
+                $nameVN['name_vn LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
+                $nameJP['name LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
+                $jobDetailVN['main_comment_vn LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
+                $jobDetailJP['main_comment LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
+            } else {
+                $nameVN['name_vn LIKE'] = '%%';
+                $nameJP['name LIKE'] = '%%';
+                $jobDetailVN['main_comment_vn LIKE'] = '%%';
+                $jobDetailJP['main_comment LIKE'] = '%%';
+            }
+
+            if (!empty($dataSearch['searchJobType'])) {
+                $wheresArray['employment_status'] = $dataSearch['searchJobType'];
+            }
+
+            if (!empty($dataSearch['searchJobCart'])) {
+                $wheresArray['category_id LIKE'] = '%' . $dataSearch['searchJobCart'] . '%';
+            }
+
+            if (!empty($dataSearch['searchRegion'])) {
+                $wheresArray['region'] = $dataSearch['searchRegion'];
+            }
+
+            $wheresArray['del_flg'] = 0;
+
+            $jobList = $this->find()
+                ->select(['product_id', 'currency', 'region', 'name', 'name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
+                ->order(['product_id' => 'DESC'])
+                ->where($nameVN)
+                ->orWhere($nameJP)
+                ->orWhere($jobDetailVN)
+                ->orWhere($jobDetailJP)
+                ->andWhere($wheresArray)
+                ->hydrate(false)
+                ->toArray();
+            return $jobList;
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
     /**

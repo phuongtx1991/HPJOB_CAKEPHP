@@ -11,47 +11,30 @@ use Cake\ORM\Entity;
  * @property string $name02
  * @property string $kana01
  * @property string $kana02
- * @property string $company_name
  * @property string $zip01
  * @property string $zip02
- * @property string $zipcode
  * @property int $country_id
  * @property int $pref
  * @property string $addr01
  * @property string $addr02
  * @property string $email
- * @property string $email_mobile
- * @property string $tel01
- * @property string $tel02
- * @property string $tel03
- * @property string $fax01
- * @property string $fax02
- * @property string $fax03
+ * @property int $phone
  * @property int $sex
- * @property int $job
- * @property \Cake\I18n\FrozenTime $birth
+ * @property \Cake\I18n\FrozenDate $birth_day
  * @property string $password
  * @property int $reminder
  * @property string $reminder_answer
  * @property string $salt
  * @property string $secret_key
- * @property \Cake\I18n\FrozenTime $first_buy_date
- * @property \Cake\I18n\FrozenTime $last_buy_date
- * @property float $buy_times
- * @property float $buy_total
- * @property float $point
- * @property string $note
  * @property int $status
  * @property \Cake\I18n\FrozenTime $create_date
  * @property \Cake\I18n\FrozenTime $update_date
  * @property int $del_flg
- * @property string $mobile_phone_id
- * @property int $mailmaga_flg
- * @property string $tel
  * @property int $receive_work_info
  * @property string $image
  * @property string $cv
  * @property string $cv_name
+ * @property \Cake\I18n\FrozenDate $cv_update
  * @property int $marital_status
  * @property int $current_address
  * @property string $pref_by_text
@@ -75,7 +58,6 @@ use Cake\ORM\Entity;
  * @property string $self_pr
  *
  * @property \App\Model\Entity\Country $country
- * @property \App\Model\Entity\MobilePhone $mobile_phone
  */
 class DtbCustomer extends Entity
 {
@@ -94,47 +76,30 @@ class DtbCustomer extends Entity
         'name02' => true,
         'kana01' => true,
         'kana02' => true,
-        'company_name' => true,
         'zip01' => true,
         'zip02' => true,
-        'zipcode' => true,
         'country_id' => true,
         'pref' => true,
         'addr01' => true,
         'addr02' => true,
         'email' => true,
-        'email_mobile' => true,
-        'tel01' => true,
-        'tel02' => true,
-        'tel03' => true,
-        'fax01' => true,
-        'fax02' => true,
-        'fax03' => true,
+        'phone' => true,
         'sex' => true,
-        'job' => true,
-        'birth' => true,
+        'birth_day' => true,
         'password' => true,
         'reminder' => true,
         'reminder_answer' => true,
         'salt' => true,
         'secret_key' => true,
-        'first_buy_date' => true,
-        'last_buy_date' => true,
-        'buy_times' => true,
-        'buy_total' => true,
-        'point' => true,
-        'note' => true,
         'status' => true,
         'create_date' => true,
         'update_date' => true,
         'del_flg' => true,
-        'mobile_phone_id' => true,
-        'mailmaga_flg' => true,
-        'tel' => true,
         'receive_work_info' => true,
         'image' => true,
         'cv' => true,
         'cv_name' => true,
+        'cv_update' => true,
         'marital_status' => true,
         'current_address' => true,
         'pref_by_text' => true,
@@ -156,8 +121,7 @@ class DtbCustomer extends Entity
         'qualification' => true,
         'skill' => true,
         'self_pr' => true,
-        'country' => true,
-        'mobile_phone' => true
+        'country' => true
     ];
 
     /**

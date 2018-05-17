@@ -68,6 +68,24 @@ class MtbCityTable extends Table
     }
 
     /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getCityById($id)
+    {
+        try {
+            $jobCity = $this->find()
+                ->where(['id' => $id])
+                ->hydrate(false)
+                ->first();
+            return $jobCity;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *

@@ -17,8 +17,7 @@ class DtbCustomerControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.dtb_customer',
-        'app.countries',
-        'app.mobile_phones'
+        'app.countries'
     ];
 
     /**

@@ -60,4 +60,22 @@ class MtbProcessTable extends Table
 
         return $validator;
     }
+
+    /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getProcessById($id)
+    {
+        try {
+            $jobProcess = $this->find()
+                ->where(['id' => $id])
+                ->hydrate(false)
+                ->first();
+            return $jobProcess;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 }

@@ -60,4 +60,22 @@ class MtbPositionTable extends Table
 
         return $validator;
     }
+
+    /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getPositionById($id)
+    {
+        try {
+            $jobPosition = $this->find()
+                ->where(['id' => $id])
+                ->hydrate(false)
+                ->first();
+            return $jobPosition;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 }

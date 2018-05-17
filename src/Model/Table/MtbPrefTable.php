@@ -80,4 +80,16 @@ class MtbPrefTable extends Table
 
         return $rules;
     }
+
+    public function getListPref()
+    {
+        try {
+            $result = $this->find()
+                ->hydrate(false)
+                ->toArray();
+            return $result;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 }

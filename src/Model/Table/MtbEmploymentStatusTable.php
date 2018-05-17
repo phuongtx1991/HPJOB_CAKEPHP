@@ -36,6 +36,24 @@ class MtbEmploymentStatusTable extends Table
     }
 
     /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getEmployStatusById($id)
+    {
+        try {
+            $empStatusCity = $this->find()
+                ->where(['id' => $id])
+                ->hydrate(false)
+                ->first();
+            return $empStatusCity;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -64,7 +65,46 @@ class MtbCategoryTable extends Table
             ->requirePresence('rank', 'create')
             ->notEmpty('rank');
 
+        $validator
+            ->requirePresence('mobile_view', 'create')
+            ->notEmpty('mobile_view');
+
         return $validator;
+    }
+
+    /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getAllCartegoryJob()
+    {
+        try {
+            $jobcart = $this->find()
+                ->hydrate(false)
+                ->toArray();
+            return $jobcart;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getAllCartegoryJobForMobile()
+    {
+        try {
+            $jobcart = $this->find()
+                ->where(['mobile_view' => 0])
+                ->hydrate(false)
+                ->toArray();
+            return $jobcart;
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
     /**

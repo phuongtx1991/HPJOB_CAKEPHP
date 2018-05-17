@@ -12,10 +12,12 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Routing\Router;
 
 /**
  * Application Controller
@@ -28,6 +30,11 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+    protected $textLangCommon;
+
+    protected $lang;
+
+    protected $customerId;
     /**
      * Initialization hook method.
      *
@@ -43,6 +50,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Common');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -50,5 +58,43 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+    }
+
+    /**
+     * Before filter callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        if (isset($this->request->query['lang'])) {
+            $this->request->session()->write('lang', $this->request->query['lang']);
+        } elseif (!$this->request->session()->check('lang')) {
+            $this->request->session()->write('lang', 'vn');
+        }
+
+        $this->lang = $this->request->session()->read('lang');
+        $this->set('lang', $this->lang);
+
+        $this->textLangCommon = $this->lang == 'vn' ? '_vn' : '';
+        $this->set('textLangCommon', $this->textLangCommon);
+        $controller = Router::getRequest()->params['controller'];
+        $controller = strtolower($controller);
+        $this->set($controller, $this->Common->textForView($controller));
+        if($controller == 'logout')
+        {
+            $this->request->session()->delete('userData');
+            $this->redirect('/SearchJob');
+        }
+
+        if($this->request->session()->check('userData'))
+        {
+            $userData = $this->request->session()->read('userData');
+            $this->set('userData', $userData);
+            $this->customerId = $userData['customer_id'];
+        }
+
     }
 }

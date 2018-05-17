@@ -25,8 +25,7 @@ class DtbCustomerTableTest extends TestCase
      */
     public $fixtures = [
         'app.dtb_customer',
-        'app.countries',
-        'app.mobile_phones'
+        'app.countries'
     ];
 
     /**
@@ -69,6 +68,66 @@ class DtbCustomerTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getMaxId method
+     *
+     * @return void
+     */
+    public function testGetMaxId()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test isMatchEmail method
+     *
+     * @return void
+     */
+    public function testIsMatchEmail()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getPasswordInfo method
+     *
+     * @return void
+     */
+    public function testGetPasswordInfo()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getBasicInfoCustumer method
+     *
+     * @return void
+     */
+    public function testGetBasicInfoCustumer()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getCustomerInfoById method
+     *
+     * @return void
+     */
+    public function testGetCustomerInfoById()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getCustomerCVById method
+     *
+     * @return void
+     */
+    public function testGetCustomerCVById()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate $end_date
  * @property float $working_year
  * @property string $working_company_name
- * @property string $company_addr
+ * @property string $position
  * @property string $job_description
  *
  * @property \App\Model\Entity\Customer $customer
@@ -35,7 +35,7 @@ class DtbCustomerCareer extends Entity
         'end_date' => true,
         'working_year' => true,
         'working_company_name' => true,
-        'company_addr' => true,
+        'position' => true,
         'job_description' => true,
         'customer' => true
     ];

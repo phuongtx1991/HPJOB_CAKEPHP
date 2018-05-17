@@ -36,6 +36,41 @@ class MtbRegionTable extends Table
     }
 
     /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getAllRegion()
+    {
+        try {
+            $jobRegion = $this->find()
+                ->hydrate(false)
+                ->toArray();
+            return $jobRegion;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * get the list category job
+     *
+     * @return array
+     */
+    public function getRegionById($id)
+    {
+        try {
+            $jobRegion = $this->find()
+                ->where(['id' => $id])
+                ->hydrate(false)
+                ->first();
+            return $jobRegion;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.

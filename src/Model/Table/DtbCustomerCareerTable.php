@@ -71,14 +71,59 @@ class DtbCustomerCareerTable extends Table
             ->allowEmpty('working_company_name');
 
         $validator
-            ->scalar('company_addr')
-            ->allowEmpty('company_addr');
+            ->scalar('position')
+            ->allowEmpty('position');
 
         $validator
             ->scalar('job_description')
             ->allowEmpty('job_description');
 
         return $validator;
+    }
+
+    public function getCustumerExpById($customer_id)
+    {
+        try {
+            $result = $this->find()
+                ->where(['customer_id' => $customer_id])
+                ->hydrate(false)
+                ->toArray();
+            return $result;
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
+    }
+
+    public function getLastPosition($customer_id)
+    {
+        try {
+            $result = $this->find()
+                ->select(['position'])
+                ->where(['customer_id' => $customer_id])
+                ->order(['start_date' => 'DESC'])
+                ->hydrate(false)
+                ->first();
+            return $result;
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
+    }
+
+    public function getMaxId()
+    {
+        try {
+            $result = $this->find()
+                ->select(['id'])
+                ->order(['id' => 'DESC'])
+                ->hydrate(false)
+                ->first();
+            return $result['id'];
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
     }
 
     /**
@@ -90,7 +135,7 @@ class DtbCustomerCareerTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['customer_id'], 'Customers'));
+//        $rules->add($rules->existsIn(['customer_id'], 'Customers'));
 
         return $rules;
     }
