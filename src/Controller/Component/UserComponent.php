@@ -83,7 +83,6 @@ class UserComponent extends Component
         $data['desired_work'] = !empty($data['desired_work']) ? implode(" ", $data['desired_work']) : '';
         $data['desired_position'] = !empty($data['desired_position']) ? implode(" ", $data['desired_position']) : '';
         $data['desired_region'] = !empty($data['desired_region']) ? implode(" ", $data['desired_region']) : '';
-//        $data['update_date'] =  date();
 
         // convert arraay experion for update
         $expInport = array();
@@ -103,7 +102,7 @@ class UserComponent extends Component
             $customerTbl->connection()->transactional(function () use ($customerTbl, $userData) {
                 $customerTbl->save($userData, ['atomic' => false]);
             });
-            $this->updateExpData($expInport);
+            $this->updateExpData($expInport, $data['customer_id']);
         } catch (Exception $e) {
             $result = false;
         }
@@ -111,23 +110,27 @@ class UserComponent extends Component
 
     }
 
-    private function updateExpData($data)
+    private function updateExpData($data, $customerId)
     {
-
         $result = true;
         foreach ($data as $item) {
             $item['start_date'] = $this->formatDateForSaveToDB($item['start_date']);
             $item['end_date'] = $this->formatDateForSaveToDB($item['end_date']);
             $item['id'] = !empty($item['exp_id']) ? $item['exp_id'] : $this->getIdForSaveToDB();
-            unset($item['exp_id']);
-            try {
-                $customerExpTbl = TableRegistry::get('DtbCustomerCareer');
+            $customerExpTbl = TableRegistry::get('DtbCustomerCareer');
+            if (empty($item['exp_id'])) {
+                $entity = $customerExpTbl->newEntity();
+            } else {
                 $entity = $customerExpTbl->get($item['id']);
-                foreach ($item as $key => $temp)
-                {
-                    $entity[$key] = $item[$key];
-                }
-//                debug($entity);die;
+            }
+            $entity['position'] = $item['exp_position'];
+            unset($item['exp_position']);
+            unset($item['exp_id']);
+            foreach ($item as $key => $temp) {
+                $entity[$key] = $item[$key];
+            }
+            $entity['customer_id'] = $customerId;
+            try {
                 //transaction
                 $customerExpTbl->connection()->transactional(function () use ($customerExpTbl, $entity) {
                     $customerExpTbl->save($entity, ['atomic' => false]);

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/screen/forsearch.css"/>
+<link rel="stylesheet" href="css/common/bootstrap-select.css">
 <div class="container" style="margin-top: 70px">
     <div class="row">
         <form class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 job-form" 　name="form1" id='form1'
@@ -9,36 +10,38 @@
                    value="<?= isset($searchKeyword)? $searchKeyword : '' ?>">
 
             <?=
-                $this->Form->select(
+            $this->Form->select(
             'searchJobType',
             [1=>$searchjob['official_staff'], 2=>$searchjob['part_time'], 3=>$searchjob['dispatch']],
             [
-            'class' => 'form-control white',
-            'empty' => $searchjob['choose_job'],
+            'class' => 'selectpicker',
+            'title' => $searchjob['choose_job']
             ]
-            );
+            )
             ?>
 
             <?=
-                $this->Form->select(
+            $this->Form->select(
             'searchJobCart',
             $jobCartArray,
             [
-            'class' => 'form-control white',
-            'empty' => $searchjob['cart_job'],
+            'class' => 'selectpicker',
+            'title' => $searchjob['cart_job'],
+            'data-size' => 10,
             ]
-            );
+            )
             ?>
 
             <?=
-                $this->Form->select(
+            $this->Form->select(
             'searchRegion',
             $RegionArray,
             [
-            'class' => 'form-control white',
-            'empty' => $searchjob['place_job'],
+            'class' => 'selectpicker',
+            'title' => $searchjob['place_job'],
+            'data-size' => 10,
             ]
-            );
+            )
             ?>
 
             <!--hidden affer seminar-->
@@ -48,16 +51,16 @@
                 'searchFrom',
                 [1=>$searchjob['search_from_vn'], 2=>$searchjob['search_from_jp']],
                 [
-                'class' => 'form-control white',
-                'empty' => $searchjob['search_from_job'],
+                'class' => 'selectpicker',
+                'title' => $searchjob['search_from_job'],
                 ]
-                );
+                )
                 ?>
             </div>
 
 
             <div style="text-align: center;margin-top: -20px">
-                <input type="button" onclick="SubmitSearch();" class="btn dark-red btn-search" title="Tìm kiếm"
+                <input type="button" onclick="SubmitSearch();" class="btn dark-red btn-search btn-fix" title="Tìm kiếm"
                        value="<?= $searchjob['search_btn_job'] ?>"
                        name="search"/>
             </div>
@@ -72,7 +75,7 @@
         <p class="font-design-lg title-jobtype">
             <b><?= $searchjob['attractive_job'] ?></b>
         </p>
-        <img class="img-responsive" src="img/screen_img /icon/dotted-line-white-med.png" alt=""/>
+        <img class="img-responsive" src="img/screen_img/icon/dotted-line-white-med.png" alt=""/>
     </div>
 
     <?php foreach ($jobAbs as $item): ?>
@@ -175,10 +178,18 @@
         </div>
     </div>
     <?php endforeach; ?>
+
+    <!--search result = 0-->
+        <?php if(count($jobSearchResult) == 0): ?>
+            <p class="no-result">
+                <?= $searchjob['search_no_result'] ?>
+            </p>
+        <?php endif; ?>
     <?php endif; ?>
 </div>
 
 <script type="text/javascript" src="js/common/jquery.lazyload.min.js"></script>
+<script src="js/common/bootstrap-select.js"></script>
 <script>
     function SubmitSearch() {
         var searchKeyword = $('#searchKeyword').val();

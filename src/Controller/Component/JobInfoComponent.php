@@ -42,7 +42,8 @@ class JobInfoComponent extends Component
         //work time
         $infoRecArray['work_time'] = nl2br($infoRecArray['working_hour' . $textLang]) . '<br>' . Configure::read('jobdetail.content_lunch_time.' . $lang) . $infoRecArray['lunch_time' . $textLang];
         //salary rank
-        $infoRecArray['salary_rank'] = '[Lương tháng]' . ' ' . $infoRecArray['salary_min'] . 'JPY〜' . $infoRecArray['salary_max'] . 'JPY';
+        $infoRecArray['salary_type'] = Configure::read('jobdetail.content_salary_type.'.$lang.'.'.$infoRecArray['salary_type']);
+        $infoRecArray['salary_rank'] = $infoRecArray['salary_type'] . ' ' . $infoRecArray['salary_min'] . 'JPY〜' . $infoRecArray['salary_max'] . 'JPY';
         //sex
 
         $infoRecArray['sex'] = !empty($infoRecArray['sex']) ? $sex[$infoRecArray['sex']] : '';

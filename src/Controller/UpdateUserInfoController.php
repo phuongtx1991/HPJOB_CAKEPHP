@@ -47,7 +47,7 @@ class UpdateUserInfoController extends AppController
         if($this->request->is('post'))
         {
             $this->User->updateUserData($this->request->data);
-            $this->redirect('/Mypage');
+            $this->redirect('/MyPage');
         }
     }
 

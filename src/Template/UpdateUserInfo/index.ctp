@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-wizard">
             <!-- Form Wizard -->
-            <form role="form" action="" method="post">
+            <form role="form" action="/UpdateUserInfo" method="post">
 
                 <h3><?= $updateuserinfo['update_user_info'] ?></h3>
                 <p><?= $updateuserinfo['user_info_step'] ?></p>

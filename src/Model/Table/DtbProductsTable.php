@@ -378,6 +378,7 @@ class DtbProductsTable extends Table
      */
     public function getJobInfoById($id)
     {
+
         try {
             $jobList = $this->find()
                 ->where(['product_id' => $id, 'del_flg' => 0])

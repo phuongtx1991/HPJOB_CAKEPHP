@@ -16,19 +16,19 @@
                 </div>
                 <?php endif; ?>
 
+                <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name02_empty'] ?>">
+                    <input class="input100 place" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="<?= $regist['placeholder_name02'] ?>(*)">
+                    <span class="focus-input100"></span>
+                </div>
+
                 <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name01_empty'] ?>">
                     <input class="input100 place" type="text" name="name01" id="name01"
                            value="<?= (isset($data['name01']))? $data['name01'] : ''; ?>" placeholder="<?= $regist['placeholder_name01'] ?>(*)">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name02_empty'] ?>">
-                    <input class="input100 place" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="<?= $regist['placeholder_name02'] ?>(*)">
-                    <span class="focus-input100"></span>
-                </div>
-
                 <div class="wrap-input100 m-b-16" data-validate="<?= $regist['validate_name02_empty'] ?>">
-                    <input class="input100" type="number" name="phone"  value="<?= (isset($data['phone']))? $data['phone'] : ''; ?>" placeholder="Số điện thoại">
+                    <input class="input100" type="number" name="phone"  value="<?= (isset($data['phone']))? $data['phone'] : ''; ?>" placeholder="<?= $regist['placeholder_phone'] ?>">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -59,9 +59,8 @@
                         <?= $regist['label_have_acc'] ?>
                     </span>
                     <span class="txt3">
-                        <?= $regist['label_login'] ?>
                         <a href="/login" class="login-btn">
-                            <?= $regist['label_login_btn'] ?>
+                            <?= $regist['label_login'] ?>
                         </a>
                      </span>
                 </div>

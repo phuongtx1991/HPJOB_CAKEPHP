@@ -3,6 +3,9 @@
 return [
     'Common' => [
         'regist' => ['vn'=>'Đăng ký','jp'=>'登録する'],
+        'country_vn' => ['vn'=>'【Việt Nam】','jp'=>'【ベトナム】'],
+        'country_jp' => ['vn'=>'【Nhật Bản】','jp'=>'【日本】'],
+        'email' => ['vn'=>'【Email】','jp'=>'【メール】'],
         'logout' => ['vn'=>'Đăng xuất','jp'=>'ログアウト'],
         'login' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
         'about_us' => ['vn'=>'Về công ty','jp'=>'会社概要'],
@@ -10,9 +13,10 @@ return [
         'mypage' => ['vn'=>'Trang thông tin cá nhân','jp'=>'マイページ'],
         'address' => ['vn'=>'Địa chỉ','jp'=>'住所'],
         'address_info' => [
-            'vn'=>'Phòng 319, tầng 3, tòa nhà UDIC Complex Hoàng Đạo Thúy,phường Trung Hòa, quận Cầu Giấy, thành phố Hà Nội.',
+            'vn'=>'Phòng 319, tầng 3, tòa nhà UDIC Complex Hoàng Đạo Thúy, phường Trung Hòa, quận Cầu Giấy, thành phố Hà Nội.',
             'jp'=>'ハノイ市カウジャイ区チュンホア庁ホアンダオトゥイ通りUdic Complex ビル3階319号'],
-        'connect' => ['vn'=>'Kết nối với chúng tôi','jp'=>'私達と接続いたします'],
+        'address_info_jp' => ['vn'=>'Tầng 6, Daiichi Seimei Building, Nishi Ikebukuro, 2-40-12, Ikerbukuro, Toshima, 171-0014','jp'=>'東京都豊島区池袋2-40-12 西池袋第一生命ビル6Ｆ'],
+        'connect' => ['vn'=>'Kết nối với chúng tôi','jp'=>'各種SNS'],
     ],
     'searchjob' => [
         'title_search' => ['vn'=>'Tìm kiếm công việc','jp'=>'仕事検索'],
@@ -30,6 +34,7 @@ return [
         'search_result' => ['vn'=>'Kết quả tìm kiếm','jp'=>'一覧仕事検索'],
         'attractive_job' => ['vn'=>'Việc làm hấp dẫn','jp'=>'人気の仕事'],
         'hiring_job' => ['vn'=>'Việc làm tuyển gấp','jp'=>'急募の仕事'],
+        'search_no_result' => ['vn'=>'Không có kết quả tìm kiếm phù hợp.','jp'=>'検索に一致する仕事はありませんでした。'],
         ],
 
     'updateuserinfo' => [
@@ -106,9 +111,9 @@ return [
         'btn_submit' => ['vn'=>'Lưu lại','jp'=>'保存'],
         //step 1
         'label_name01' => ['vn'=>'Tên của bạn','jp'=>'名前'],
-        'label_name02' => ['vn'=>'Họ của bạn','jp'=>'性名'],
+        'label_name02' => ['vn'=>'Họ của bạn','jp'=>'苗字'],
         'label_kana01' => ['vn'=>'Tên của bạn (furigana)','jp'=>'名前(フリガナ)'],
-        'label_kana02' => ['vn'=>'Họ của bạn (furigana)','jp'=>'性名(フリガナ)'],
+        'label_kana02' => ['vn'=>'Họ của bạn (furigana)','jp'=>'苗字(フリガナ)'],
         'label_sex' => ['vn'=>'Giới tính :','jp'=>'性別 :'],
         'label_sex_male' => ['vn'=>'Nam','jp'=>'男性'],
         'label_sex_female' => ['vn'=>'Nữ','jp'=>'女性'],
@@ -220,6 +225,18 @@ return [
         'label_person_charge' => ['vn'=>'Người phụ trách','jp'=>'担当者'],
 
         'content_lunch_time' => ['vn'=>'Giờ nghỉ trưa : ','jp'=>'昼休み時間：'],
+        'content_salary_type' => [
+            'vn'=> [
+                1 => '[Lương giờ] ',
+                2 => '[Lương ngày] ',
+                3 => '[Lương tháng] ',
+            ],
+            'jp'=> [
+                1 => '【時給】',
+                2 =>'【日給】',
+                3 => '【月給】',
+            ],
+        ],
 
         'sex_show' => [
             'vn' => ['Không yêu cầu','Nam','Nữ'],
@@ -227,20 +244,20 @@ return [
         ],
     ],
     'regist' => [
-        'label_sign_up' => ['vn'=>'Đăng ký thành viên','jp'=>'簡単に会員登録'],
+        'label_sign_up' => ['vn'=>'Đăng ký thành viên','jp'=>'簡易会員登録'],
         'label_sign_up_text' => ['vn'=>'Đăng ký','jp'=>'会員登録をする'],
-        'label_have_acc' => ['vn'=>'Bạn đã có tài khoản ?','jp'=>'アカウントがありますか？'],
+        'label_have_acc' => ['vn'=>'Bạn đã có tài khoản ?','jp'=>'アカウントをお持ちの方はこちら'],
         'label_login' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
-        'label_login_btn' => ['vn'=>'Tại đây','jp'=>'こちらへ'],
 
         'placeholder_name01' => ['vn'=>'Tên của bạn','jp'=>'名前'],
-        'placeholder_name02' => ['vn'=>'Họ của bạn','jp'=>'性名'],
+        'placeholder_name02' => ['vn'=>'Họ của bạn','jp'=>'苗字'],
         'placeholder_email' => ['vn'=>'Địa chỉ email','jp'=>'メールアドレス'],
+        'placeholder_phone' => ['vn'=>'Số điện thoại','jp'=>'電話番号'],
         'placeholder_password' => ['vn'=>'Mật khẩu','jp'=>'パスワード'],
         'placeholder_password_confirm' => ['vn'=>'Mật khẩu xác nhận','jp'=>'確認パスワード'],
 
-        'validate_name01_empty' => ['vn'=>'Bạn chưa nhập tên của bạn','jp'=>'お名前(姓)が入力されていません'],
-        'validate_name02_empty' => ['vn'=>'Bạn chưa nhập tên của bạn','jp'=>'お名前(名)が入力されていません'],
+        'validate_name02_empty' => ['vn'=>'Bạn chưa nhập họ của bạn','jp'=>'お名前(苗字)が入力されていません'],
+        'validate_name01_empty' => ['vn'=>'Bạn chưa nhập tên của bạn','jp'=>'お名前(名前)が入力されていません'],
         'validate_email_empty' => ['vn'=>'Bạn chưa nhập email','jp'=>'メールアドレスが入力されていません'],
         'validate_email_wrong' => ['vn'=>'nhap email chua dung chuan (vd: abc@xyz.com)','jp'=>'メールアドレスの形式が不正です (例: abc@xyz.com)'],
         'validate_email_existed' => ['vn'=>'Địa chỉ email đã tồn tại. Nếu bạn đã có tài khoản, xin hãy vào trang đăng nhập.','jp'=>'このメールで登録したことがあります。ログイン画面に変更してください'],
@@ -253,7 +270,7 @@ return [
         'label_sign_in' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
         'label_forgot' => ['vn'=>'Quên mật khẩu','jp'=>'パスワードを忘れた方'],
         'label_dont_have_acc' => ['vn'=>'Bạn chưa có tài khoản ?','jp'=>'アカウントがまだありませんか？'],
-        'label_sign_up_now' => ['vn'=>'Đăng ký ngay','jp'=>'簡単に会員登録'],
+        'label_sign_up_now' => ['vn'=>'Đăng ký ngay','jp'=>'簡易会員登録'],
         'label_sign_up_btn' => ['vn'=>'Tại đây','jp'=>'こちらへ'],
 
         'placeholder_email' => ['vn'=>'Địa chỉ email','jp'=>'メールアドレス'],

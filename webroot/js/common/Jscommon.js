@@ -32,21 +32,25 @@ $(document).ready(function () {
 
     //show hide menu bar
     var $navi = $("#navigation"), scrollTop = 0;
+    var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     $(window).scroll(function () {
-        var y = $(this).scrollTop(), speed = 0.05, pos = y * speed, maxPos = 100;
-        if (y > scrollTop) {
-            pos = maxPos;
-        } else {
-            pos = 0;
+        if(!is_safari)
+        {
+            var y = $(this).scrollTop(), speed = 0.05, pos = y * speed, maxPos = 100;
+            if (y > scrollTop) {
+                pos = maxPos;
+            } else {
+                pos = 0;
+            }
+            scrollTop = y;
+            $(".menu").hide();
+            $navi.css({
+                "-webkit-transform": "translateY(-" + pos + "%)",
+                "-moz-transform": "translateY(-" + pos + "%)",
+                "-o-transform": "translateY(-" + pos + "%)",
+                "transform": "translateY(-" + pos + "%)"
+            });
         }
-        scrollTop = y;
-        $(".menu").hide();
-        $navi.css({
-            "-webkit-transform": "translateY(-" + pos + "%)",
-            "-moz-transform": "translateY(-" + pos + "%)",
-            "-o-transform": "translateY(-" + pos + "%)",
-            "transform": "translateY(-" + pos + "%)"
-        });
     });
 })
 ;

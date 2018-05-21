@@ -154,7 +154,7 @@
                 </tr>
                 <tr >
                     <td class="label-fix"><?= $jobdetail['label_insurance'] ?></td>
-                    <td><?= nl2br(h($JobInfo['insurance_vn'])) ?></td>
+                    <td><?= nl2br(h($JobInfo['insurance'.$textLangCommon])) ?></td>
                 </tr>
                 <tr>
                     <td class="label-fix"><?= $jobdetail['label_welfare_content'] ?></td>

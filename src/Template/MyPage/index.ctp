@@ -11,7 +11,7 @@
                                 <img src="img/avatar/avatar_default.png" alt="" class="bo-cir height-120">
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <a href="/updateuserinfo" class="btn btn-danger"><?= $mypage['label_update_cv'] ?></a>
+                                <a href="/UpdateUserInfo" class="btn btn-danger"><?= $mypage['label_update_cv'] ?></a>
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-8">
@@ -47,7 +47,7 @@
             <div class="m-b-10">
                     <span class="fileUpload btn btn-md btn-success width-100">
                         <span class="upl" id="upload"><?= $mypage['label_select_file'] ?></span>
-                        <form name="form1" id='form1' method="post" enctype="multipart/form-data" action="/Mypage">
+                        <form name="form1" id='form1' method="post" enctype="multipart/form-data" action="/MyPage">
                             <input type="file" class="upload up" name="file_cv"/>
                         </form>
                     </span>
